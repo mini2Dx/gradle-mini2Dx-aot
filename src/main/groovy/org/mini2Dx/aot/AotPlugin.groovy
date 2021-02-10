@@ -23,13 +23,16 @@ class AotPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
+        project.apply(plugin:'java')
+
         def extension = project.extensions.create("aot", AotExtension, project);
 
         project.getTasks().register("generateAotMetadata", AotMetadataTask.class, new Action<AotMetadataTask>() {
             public void execute(AotMetadataTask task) {
                 task.dependencyInjectionOutputFile = extension.dependencyInjectionOutputFile;
-                task.serializationOutputOutputFile = extension.serializationOutputFile;
+                task.serializationOutputFile = extension.serializationOutputFile;
                 task.classesDir = extension.classesDir;
+                task.scanPackage = extension.scanPackage;
             }
         });
     }

@@ -12,8 +12,9 @@ buildscript {
 }
 
 repositories {
+	mavenLocal()
 	mavenCentral()
-	maven { url "https://mini2dx.org/maven/content/repositories/thirdparty" }
+	maven { url "https://oss.sonatype.org/service/local/repositories/releases/content/" }
 }
 
 apply plugin: 'groovy'
@@ -40,6 +41,7 @@ dependencies {
 	compile gradleApi()
 	compile localGroovy()
 	compile 'org.reflections:reflections:0.9.12'
+	implementation 'org.mini2Dx:mini2dx-core:2.0.0-alpha.43'
 
 	testCompile 'junit:junit:4.11'
 }

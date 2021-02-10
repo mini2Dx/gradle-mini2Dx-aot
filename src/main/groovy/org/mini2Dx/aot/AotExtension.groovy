@@ -15,6 +15,7 @@
  ******************************************************************************/
 package org.mini2Dx.aot
 
+import javafx.beans.property.ListProperty
 import org.gradle.api.Project
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.RegularFileProperty
@@ -23,18 +24,18 @@ import org.gradle.api.tasks.Optional
 import org.gradle.api.tasks.OutputFile
 
 class AotExtension {
-    final DirectoryProperty classesDir;
     final RegularFileProperty dependencyInjectionOutputFile;
     final RegularFileProperty serializationOutputFile;
 
+    String scanPackage;
+
     AotExtension(Project project) {
-        classesDir = project.objects.directoryProperty();
         dependencyInjectionOutputFile = project.objects.directoryProperty();
         serializationOutputFile = project.objects.directoryProperty();
     }
 
-    DirectoryProperty getClassesDir() {
-        return classesDir
+    String getScanPackage() {
+        return scanPackage
     }
 
     RegularFileProperty getDependencyInjectionOutputFile() {
